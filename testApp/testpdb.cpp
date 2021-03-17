@@ -307,7 +307,7 @@ MAIN(testpdb)
 
         testDiag("Refs before");
         for(epics::RefSnapshot::iterator it(ref_before.begin()), end(ref_before.end()); it!=end; ++it) {
-            testDiag("Cnt %s = %zu (%ld)", it->first.c_str(), it->second.current, it->second.delta);
+            testDiag("Cnt %s = %I64u (%ld)", it->first.c_str(), it->second.current, it->second.delta);
         }
 
         TestIOC IOC;
@@ -345,7 +345,7 @@ MAIN(testpdb)
         ref_after.update();
         epics::RefSnapshot ref_diff = ref_after - ref_before;
         for(epics::RefSnapshot::iterator it(ref_diff.begin()), end(ref_diff.end()); it!=end; ++it) {
-            testDiag("Cnt %s = %zu (%ld)", it->first.c_str(), it->second.current, it->second.delta);
+            testDiag("Cnt %s = %I64u (%ld)", it->first.c_str(), it->second.current, it->second.delta);
         }
 
         testDiag("check to see that all dbChannel are closed before IOC shuts down");

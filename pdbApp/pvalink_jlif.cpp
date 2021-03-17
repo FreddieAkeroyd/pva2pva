@@ -136,7 +136,7 @@ jlif_result pva_parse_integer(jlink *pjlink, long long val)
         } else if(pvt->jkey == "monorder") {
             pvt->monorder = std::max(-1024, std::min(int(val), 1024));
         } else if(pvt->debug) {
-            printf("pva link parsing unknown integer depth=%u key=\"%s\" value=%lld\n",
+            printf("pva link parsing unknown integer depth=%u key=\"%s\" value=%I64d\n",
                    pvt->parseDepth, pvt->jkey.c_str(), val);
         }
 
@@ -276,7 +276,7 @@ void pva_report(const jlink *rpjlink, int lvl, int indent)
             }
 
             if(lvl>0) {
-                printf(" #disconn=%zu prov=%s", pval->lchan->num_disconnect, pval->lchan->providerName.c_str());
+                printf(" #disconn=%I64u prov=%s", pval->lchan->num_disconnect, pval->lchan->providerName.c_str());
             }
             if(lvl>1) {
                 printf(" inprog=%c",
